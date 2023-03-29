@@ -50,10 +50,15 @@ def main():
             src_path = os.path.abspath(os.getcwd()) + '/private/private_dir'
             tgt_path = os.path.abspath(os.getcwd()) + '/private_dir'
             shutil.copytree(src_path, tgt_path)
+            # Delete the original directory so we save space
+            shutil.rmtree(os.path.abspath(os.getcwd()) +
+                          '/private/private_dir')
 
         # Show the directory
         st.write("Directory:")
         st.write(os.listdir(os.path.abspath(os.getcwd())))
+        st.write("Directory /private:")
+        st.write(os.listdir('./private'))
         st.write("Directory /private_dir:")
         st.write(os.listdir('./private_dir'))
 
@@ -69,10 +74,15 @@ def main():
             src_path = os.path.abspath(os.getcwd()) + '/private/pages'
             tgt_path = os.path.abspath(os.getcwd()) + '/pages'
             shutil.copytree(src_path, tgt_path)
+            # Delete the original directory so we save space
+            shutil.rmtree(os.path.abspath(os.getcwd()) +
+                          '/private/pages')
 
         # Show the directory
         st.write("Directory:")
         st.write(os.listdir(os.path.abspath(os.getcwd())))
+        st.write("Directory /private:")
+        st.write(os.listdir('./private'))
         st.write("Directory /pages:")
         st.write(os.listdir('./pages'))
 
