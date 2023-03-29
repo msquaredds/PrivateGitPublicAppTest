@@ -26,6 +26,8 @@ def main():
             Repo.clone_from(repo_name, "./private")
         st.write("Directory:")
         st.write(os.listdir(os.path.abspath(os.getcwd())))
+        from private import main
+        st.markdown(main.private_text)
 
 
 
