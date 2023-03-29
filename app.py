@@ -6,6 +6,8 @@ correct.
 
 import streamlit as st
 
+from git import repo
+
 
 def main():
     st.markdown("# This section is public!")
@@ -15,7 +17,10 @@ def main():
         help="This is just a test, so the correct password is 'password'.")
 
     if password == 'password':
-        pass
+        git_pat = st.secrets['GIT_PAT']
+        repo_name = "https://msquaredds:" + git_pat +\
+                    "@github.com/msquaredds/PrivateGitForPublicApp.git"
+        repo.clone_from(repo_name)
 
 
 if __name__ == '__main__':
