@@ -20,7 +20,7 @@ def main():
         git_pat = st.secrets['GIT_PAT']
         repo_name = "https://msquaredds:" + git_pat +\
                     "@github.com/msquaredds/PrivateGitForPublicApp.git"
-        Repo.clone_from(repo_name)
+        Repo.clone_from(repo_name, "./private")
 
 
 if __name__ == '__main__':
