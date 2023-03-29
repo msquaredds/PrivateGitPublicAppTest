@@ -4,6 +4,7 @@ which can be accessed by the streamlit app if a user's credentials are
 correct.
 """
 
+import os
 import streamlit as st
 
 from git import Repo
@@ -17,10 +18,12 @@ def main():
         help="This is just a test, so the correct password is 'password'.")
 
     if password == 'password':
-        git_pat = st.secrets['GIT_PAT']
-        repo_name = "https://msquaredds:" + git_pat +\
-                    "@github.com/msquaredds/PrivateGitForPublicApp.git"
-        Repo.clone_from(repo_name, "./private")
+        if not os.path.exists('./private'):
+            git_pat = st.secrets['GIT_PAT']
+            repo_name = "https://msquaredds:" + git_pat +\
+                        "@github.com/msquaredds/PrivateGitForPublicApp.git"
+            Repo.clone_from(repo_name, "./private")
+        print(os.path.abspath(os.getcwd()))
 
 
 
