@@ -27,11 +27,13 @@ def main():
             repo_name = "https://msquaredds:" + git_pat +\
                         "@github.com/msquaredds/PrivateGitForPublicApp.git"
             Repo.clone_from(repo_name, "./private")
-        st.write("Directory:")
-        st.write(os.listdir(os.path.abspath(os.getcwd())))
         # Import the private code
         from private import main
         st.markdown(main.private_text)
+
+        # Show the directory
+        st.write("Directory:")
+        st.write(os.listdir(os.path.abspath(os.getcwd()) + '/private'))
 
         # We can't do the same with a private directory (a directory
         # within a repo), so instead, we'll clone the entire repo and then
