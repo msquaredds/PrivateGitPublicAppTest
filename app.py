@@ -38,9 +38,9 @@ def main():
             git_pat = st.secrets['GIT_PAT']
             # This is a more specific directory within a repo
             repo_name = "https://msquaredds:" + git_pat +\
-                        "@github.com/msquaredds/" +\
-                        "PrivateGitForPublicApp.git/tree/main/private_dir"
-            Repo.clone_from(repo_name, "./private_dir")
+                        "@github.com/msquaredds/PrivateGitForPublicApp.git"
+            Repo.clone_from(repo_name, "./private_dir",
+                            submodule="private_dir")
         st.write("Directory:")
         st.write(os.listdir(os.path.abspath(os.getcwd())))
         # Import the private code
