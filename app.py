@@ -9,7 +9,6 @@ import shutil
 import streamlit as st
 
 from git import Repo
-from pathlib import Path
 
 
 def main():
@@ -50,10 +49,7 @@ def main():
             st.write("Copying private_dir to top level...")
             src_path = os.path.abspath(os.getcwd()) + '/private/private_dir'
             tgt_path = os.path.abspath(os.getcwd()) + '/private_dir'
-            for src_file in Path(src_path).glob('*.*'):
-                st.write(src_file)
-                st.write(tgt_path)
-                shutil.copy(src_file, tgt_path)
+            shutil.copytree(src_path, tgt_path)
 
         # Show the directory
         st.write("Directory:")
@@ -62,10 +58,6 @@ def main():
         st.write(os.listdir(os.path.abspath(os.getcwd()) + '/private'))
         st.write("Directory /private_dir:")
         st.write(os.listdir('./private_dir'))
-
-        tgt_path = os.path.abspath(os.getcwd()) + '/private_dir'
-        for tgt_file in Path(tgt_path).glob('*.*'):
-            st.write(tgt_file)
 
         # Import the private code
         import private_dir
