@@ -47,6 +47,7 @@ def main():
         if not os.path.exists('./private_dir') and \
                 'private_dir' in os.listdir(os.path.abspath(os.getcwd()) +
                                             '/private'):
+            st.write("Copying private_dir to top level...")
             src_path = os.path.abspath(os.getcwd()) + '/private/private_dir'
             tgt_path = os.path.abspath(os.getcwd()) + '/private_dir'
             for src_file in Path(src_path).glob('*.*'):
