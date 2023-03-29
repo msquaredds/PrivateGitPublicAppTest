@@ -23,6 +23,10 @@ def main():
         # See if the password is generally correct
         st.write("You have the correct password!")
 
+        # Show the directory
+        st.write("Directory:")
+        st.write(os.listdir(os.path.abspath(os.getcwd())))
+
         # Get the private directory if it doesn't already exist
         if not os.path.exists('./private'):
             git_pat = st.secrets['GIT_PAT']
@@ -34,7 +38,7 @@ def main():
         st.markdown(main.private_text)
 
         # Show the directory
-        st.write("Directory:")
+        st.write("Directory /private:")
         st.write(os.listdir(os.path.abspath(os.getcwd()) + '/private'))
 
         # We can't do the same with a private directory (a directory
