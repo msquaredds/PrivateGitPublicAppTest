@@ -39,7 +39,7 @@ def main():
             # This is a more specific directory within a repo
             repo_name = "https://msquaredds:" + git_pat +\
                         "@github.com/msquaredds/PrivateGitForPublicApp" \
-                        "/private_dir"
+                        "/private_dir.git"
             Repo.clone_from(repo_name, "./private_dir")
         st.write("Directory:")
         st.write(os.listdir(os.path.abspath(os.getcwd())))
