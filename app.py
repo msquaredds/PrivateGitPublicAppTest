@@ -51,7 +51,7 @@ def main():
         # Show the directory
         st.write("Directory:")
         st.write(os.listdir(os.path.abspath(os.getcwd())))
-        st.write(os.listdir(os.path.abspath(os.getcwd()) + '/private_dir'))
+        #st.write(os.listdir(os.path.abspath(os.getcwd()) + '/private_dir'))
 
         # Import the private code
         import private_dir
