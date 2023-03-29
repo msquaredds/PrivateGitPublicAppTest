@@ -24,7 +24,8 @@ def main():
             repo_name = "https://msquaredds:" + git_pat +\
                         "@github.com/msquaredds/PrivateGitForPublicApp.git"
             Repo.clone_from(repo_name, "./private")
-        st.write(os.path.abspath(os.getcwd()))
+        st.write("Directory:")
+        st.write(os.listdir(os.path.abspath(os.getcwd())))
 
 
 
