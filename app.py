@@ -60,7 +60,7 @@ def main():
         st.write("Directory /private:")
         st.write(os.listdir(os.path.abspath(os.getcwd()) + '/private'))
         st.write("Directory /private_dir:")
-        st.write(os.listdir(os.path.abspath(os.getcwd()) + '/private_dir'))
+        st.write(os.path.exists(os.path.abspath(os.getcwd()) + '/private_dir'))
 
         # Import the private code
         import private_dir
