@@ -5,9 +5,11 @@ correct.
 """
 
 import os
+import shutil
 import streamlit as st
 
 from git import Repo
+from pathlib import Path
 
 
 def main():
@@ -38,18 +40,25 @@ def main():
         # We can't do the same with a private directory (a directory
         # within a repo), so instead, we'll clone the entire repo and then
         # move the private directory to the top level
-        if not os.path.exists('./private_dir'):
-            git_pat = st.secrets['GIT_PAT']
-            # This is a more specific directory within a repo
-            repo_name = "https://msquaredds:" + git_pat +\
-                        "@github.com/msquaredds/PrivateGitForPublicApp.git"
-            Repo.clone_from(repo_name, "./private_dir",
-                            submodule="private_dir")
+        if not os.path.exists('./private_dir') and \
+                'private_dir' in os.listdir(os.path.abspath(os.getcwd()) +
+                                            '/private'):
+            src_path = os.path.abspath(os.getcwd()) + '/private/private_dir'
+            tgt_path = os.path.abspath(os.getcwd()) + '/private_dir'
+            for src_file in Path(src_path).glob('*.*'):
+                shutil.copy(src_file, tgt_path)
+
+        # Show the directory
         st.write("Directory:")
         st.write(os.listdir(os.path.abspath(os.getcwd())))
+        st.write(os.listdir(os.path.abspath(os.getcwd()) + '/private_dir'))
+
         # Import the private code
         import private_dir
         private_dir.test.say_hi()
+
+    else:
+        st.write("You don't have the correct password.")
 
 
 
