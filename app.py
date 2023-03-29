@@ -52,6 +52,7 @@ def main():
             tgt_path = os.path.abspath(os.getcwd()) + '/private_dir'
             for src_file in Path(src_path).glob('*.*'):
                 st.write(src_file)
+                st.write(tgt_path)
                 shutil.copy(src_file, tgt_path)
 
         # Show the directory
