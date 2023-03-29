@@ -62,6 +62,10 @@ def main():
         st.write("Directory /private_dir:")
         st.write(os.path.exists(os.path.abspath(os.getcwd()) + '/private_dir'))
 
+        tgt_path = os.path.abspath(os.getcwd()) + '/private_dir'
+        for tgt_file in Path(tgt_path).glob('*.*'):
+            st.write(tgt_file)
+
         # Import the private code
         import private_dir
         private_dir.test.say_hi()
