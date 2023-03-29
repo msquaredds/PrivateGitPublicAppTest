@@ -18,6 +18,7 @@ def main():
         help="This is just a test, so the correct password is 'password'.")
 
     if password == 'password':
+        st.write("You have the correct password!")
         if not os.path.exists('./private'):
             git_pat = st.secrets['GIT_PAT']
             repo_name = "https://msquaredds:" + git_pat +\
