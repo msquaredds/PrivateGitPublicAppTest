@@ -6,7 +6,7 @@ correct.
 
 import streamlit as st
 
-from git import repo
+from git import Repo
 
 
 def main():
@@ -20,7 +20,7 @@ def main():
         git_pat = st.secrets['GIT_PAT']
         repo_name = "https://msquaredds:" + git_pat +\
                     "@github.com/msquaredds/PrivateGitForPublicApp.git"
-        repo.clone_from(repo_name)
+        Repo.clone_from(repo_name)
 
 
 if __name__ == '__main__':
