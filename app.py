@@ -15,7 +15,8 @@ def main():
         help="This is just a test, so the correct password is 'password'.")
 
     if password == 'password':
-        st.markdown("# This section is private!")
+        from private import private
+        st.markdown(private.private_text)
 
 
 if __name__ == '__main__':
