@@ -54,14 +54,27 @@ def main():
         # Show the directory
         st.write("Directory:")
         st.write(os.listdir(os.path.abspath(os.getcwd())))
-        st.write("Directory /private:")
-        st.write(os.listdir(os.path.abspath(os.getcwd()) + '/private'))
         st.write("Directory /private_dir:")
         st.write(os.listdir('./private_dir'))
 
         # Import the private code
         import private_dir
         private_dir.test.say_hi()
+
+        # Same thing with pages/tabs
+        if not os.path.exists('./pages') and \
+                'pages' in os.listdir(os.path.abspath(os.getcwd()) +
+                                            '/private'):
+            st.write("Copying pages to top level...")
+            src_path = os.path.abspath(os.getcwd()) + '/private/pages'
+            tgt_path = os.path.abspath(os.getcwd()) + '/pages'
+            shutil.copytree(src_path, tgt_path)
+
+        # Show the directory
+        st.write("Directory:")
+        st.write(os.listdir(os.path.abspath(os.getcwd())))
+        st.write("Directory /pages:")
+        st.write(os.listdir('./pages'))
 
     else:
         st.write("You don't have the correct password.")
